@@ -3,6 +3,8 @@ import "./App.css";
 import { Home, ProductInformation, ProductList } from "./pages";
 import { Footer, Navbar } from "./components";
 
+// github source code :  https://github.com/gangde-vishal/gamemano-assignment
+
 function App() {
   return (
     <>
