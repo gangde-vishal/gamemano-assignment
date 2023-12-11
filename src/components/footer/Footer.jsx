@@ -1,81 +1,113 @@
 import React from "react";
-import logo from "../../assets/images/gamemano-logo-2-removebg-preview.png";
+import Logo from "../../assets/images/logo.svg";
+import FooterLogo from "../../assets/images/footer.svg";
+import { Link } from "react-router-dom";
+import "./footer.css";
 const Footer = () => {
   return (
-    <footer class="section-footer">
-      <div class="grid container grid--footer">
-        <div class="logo-col">
-          <div class="footer-logo">
-            <img src={logo} alt="gamemano-logo" class="gamemano-logo" />
-            <p class="footer-text">
-              GameMano is a product development company that exclusively focuses
-              on game entertainment. We craft beautiful and exciting games that
-              people want to continue playing. With our efficient industry
-              experience, we will take care of your gaming needs from start to
-              finish.
+    <>
+      <footer className="section-footer">
+        <img src={FooterLogo} alt="Footer" />
+        <div className="grid container grid--footer">
+          <div className="logo-col">
+            <Link to="/" className="footer-logo">
+              <img src={Logo} alt="logo" className="logo" />
+            </Link>
+            <p className="footer-description">
+              lOGO is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s
             </p>
           </div>
-        </div>
-        <nav class="nav-col">
-          <p class="footer-heading">useful links</p>
-          <ul class="footer-nav">
-            <li>
-              <a class="footer-links" href="#">
-                home
-              </a>
-            </li>
-            <li>
-              <a class="footer-links" href="#">
-                product
-              </a>
-            </li>
-            <li>
-              <a class="footer-links" href="#">
-                about us
-              </a>
-            </li>
-            <li>
-              <a class="footer-links" href="#">
-                contact us
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <nav class="nav-col">
-          <p class="footer-heading">Follow us on</p>
-          <ul class="social-links">
-            <li>
-              <a href="#" class="footer-links">
-                <ion-icon class="footer-icon" name="logo-facebook"></ion-icon>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="footer-links">
-                <ion-icon class="footer-icon" name="logo-instagram"></ion-icon>
-              </a>
-            </li>
 
-            <li>
-              <a href="#" class="footer-links">
-                <ion-icon class="footer-icon" name="logo-twitter"></ion-icon>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="footer-links">
-                <ion-icon class="footer-icon" name="logo-youtube"></ion-icon>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <ion-icon name="rocket-outline" class="footer-icon"></ion-icon>
-      </div>
+          <nav className="nav-col">
+            <p className="footer-heading">useful links</p>
+
+            <ul className="footer-nav">
+              <li>
+                <Link className="footer-links" to="/">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link className="footer-links" to="/product-list">
+                  Product
+                </Link>
+              </li>
+              <li>
+                <Link className="footer-links" to="">
+                  About us
+                </Link>
+              </li>
+              <li>
+                <Link className="footer-links" to="">
+                  Contact us
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <nav className="nav-col">
+            <div className="follow-us">
+              <p>follow us on</p>
+              <ul className="social-links">
+                <li>
+                  <a
+                    href="www.facebook.com"
+                    target="_blank"
+                    className="footer-links"
+                  >
+                    <ion-icon
+                      className="footer-icon"
+                      name="logo-facebook"
+                    ></ion-icon>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="www.instagram.com"
+                    target="_blank"
+                    className="footer-links"
+                  >
+                    <ion-icon
+                      className="footer-icon"
+                      name="logo-instagram"
+                    ></ion-icon>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="www.twitter.com"
+                    target="_blank"
+                    className="footer-links"
+                  >
+                    <ion-icon
+                      className="footer-icon"
+                      name="logo-twitter"
+                    ></ion-icon>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="www.youtube.com"
+                    target="_blank"
+                    className="footer-links"
+                  >
+                    <ion-icon
+                      className="footer-icon"
+                      name="logo-youtube"
+                    ></ion-icon>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </footer>
       <div>
-        <p class="copyright">
-          Copyright &copy; <span class="year">2027</span> by Omnifood, Inc. All
-          Right Reserved
-        </p>
+        <p className="copyright">COPYRIGT 2021 lOGO ALL RIGHT RESERVED</p>
       </div>
-    </footer>
+    </>
   );
 };
 

@@ -1,25 +1,20 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Home, ProductInformation, ProductList } from "./pages";
+import { Home, ProductInfo, ProductList } from "./pages";
 import { Footer, Navbar } from "./components";
-
-// github source code :  https://github.com/gangde-vishal/gamemano-assignment
 
 function App() {
   return (
     <>
-      <Navbar />
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="product-list" element={<ProductList />} />
-          <Route
-            path="product-information/:id"
-            element={<ProductInformation />}
-          />
+          <Route path="/product-list" element={<ProductList />} />
+          <Route path="/product-information/:id" element={<ProductInfo />} />
         </Routes>
+        <Footer />
       </Router>
-      <Footer />
     </>
   );
 }

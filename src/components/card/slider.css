@@ -1,0 +1,77 @@
+.product-carousel {
+  position: relative;
+  /* overflow: hidden; */
+  padding: 26px;
+}
+
+.product-container {
+  padding: 0px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  top: 10px;
+  margin-right: 30px;
+  gap: 8.4rem;
+  scroll-behavior: smooth;
+}
+
+.pre-carousel-btn,
+.next-carousel-btn {
+  width: 30px;
+  height: 100%;
+  position: absolute;
+  top: 210px;
+  cursor: pointer !important;
+}
+
+.next-carousel-btn {
+  right: 600px;
+  cursor: pointer !important;
+}
+.pre-carousel-btn {
+  left: 535px;
+}
+
+.mycard {
+  min-width: 160px;
+  overflow: hidden;
+  max-height: 170px;
+  background-color: #fff;
+  border: 3px solid gold;
+  margin: 10px;
+  color: #000;
+}
+
+.mycard-items {
+  padding: 1rem 2rem;
+  text-align: left;
+  margin-top: 5px;
+}
+.mycard-brand {
+  color: #000;
+  font-size: 14px;
+  margin-top: 4px;
+}
+.mycard-title {
+  color: #0a0a0a;
+  margin-top: 5px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.mycard-price {
+  color: #000;
+  margin-top: 3px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.mycard-rating,
+.rating {
+  color: gold;
+  font-size: 16px;
+  margin-top: 2px;
+}
+@media (max-width: 544px) {
+  .mycard {
+    visibility: hidden;
+  }
+}

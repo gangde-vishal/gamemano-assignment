@@ -1,176 +1,103 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import useFetch from "../custom-hook/useFetch";
+import React, { useEffect } from "react";
 
-const BASE_URL = "https://dummyjson.com/products";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProducts } from "../features/allProducts/allProductSlice";
+import Loading from "../components/loading/Loading";
+import Electronics from "../assets/images/electronics-logo.svg";
+import Description from "../assets/images/sub-description.svg";
+import ViewAllProducts from "../assets/images/view-all-products.svg";
+import RightArrow from "../assets/images/right-arrow.svg";
+import ProductLogo from "../assets/images/product-logo.svg";
+import { getProduct } from "../features/product/productSlice";
+import ProductSlider from "../components/card/ProductSlider";
 const Home = () => {
-  const { data } = useFetch("");
-  console.log(data);
+  const { isLoading, products } = useSelector((store) => store.allProducts);
+
+  const dispatch = useDispatch();
+
+  const productsToDisplay = products.slice(0, 6);
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
-      {/* <div>
-       <Link to="/">Home</Link>
-       <Link to="/product-list">Product List</Link>
-       <Link to="/product-information/1">Product Information</Link>
-     </div> */}
       <main>
-        <section class="section-hero">
-          <div class="hero">
-            <div class="hero-text-box">
-              <h1 class="heading-primary">Logo Electronics</h1>
-              <div class="hero-description-underline">
-                <span class="line"></span>
-                <p class="hero-description">The techies you love</p>
-                <span class="line"></span>
-              </div>
-              <a href="#try-for-free" class="btn btn--primary margin-right-sm">
-                view all products
-                <ion-icon
-                  name="arrow-forward-outline"
-                  class="arrow-icon"
-                ></ion-icon>
-              </a>
-            </div>
-          </div>
-        </section>
-        <section class="slider">
-          <div class="image-slider">
-            <div className="slide">
-              <button>prev</button>
-              <div class="card">
+        <section className="section-hero">
+          <div className="hero">
+            <div className="hero-text-box">
+              <img
+                src={Electronics}
+                alt="Electronics"
+                className="main-heading"
+              />
+              <img
+                src={Description}
+                alt="Description"
+                className="sub-heading"
+              />
+              <Link to="/product-list">
                 <img
-                  src="/w3images/jeans3.jpg"
-                  alt="Denim Jeans"
-                  style={{ width: "100%" }}
+                  src={ViewAllProducts}
+                  alt="ViewAllProducts"
+                  className="view-all-products"
                 />
-                <h1>Apple</h1>
-                <p class="price">$19.99</p>
-                <p></p>
-              </div>
-              <div class="card">
-                <img
-                  src="/w3images/jeans3.jpg"
-                  alt="Denim Jeans"
-                  style={{ width: "100%" }}
-                />
-                <h1>Keyboard</h1>
-                <p class="price">$19.99</p>
-                <p></p>
-              </div>
-              <div class="card">
-                <img
-                  src="/w3images/jeans3.jpg"
-                  alt="Denim Jeans"
-                  style={{ width: "100%" }}
-                />
-                <h1>Desktop</h1>
-                <p class="price">$19.99</p>
-                <p></p>
-              </div>
-              <div class="card">
-                <img
-                  src="/w3images/jeans3.jpg"
-                  alt="Denim Jeans"
-                  style={{ width: "100%" }}
-                />
-                <h1>Headphone</h1>
-                <p class="price">$19.99</p>
-                <p></p>
-              </div>
-              <button>next</button>
-            </div>
-          </div>
-        </section>
-        <section class="products">
-          <h1 class="heading-secondary">Products</h1>
-          <div class="card-products">
-            <div className="col">
-              <div class="card-details">
-                <div class="saved">
-                  <p>RUBI 128k</p>
-                  <ion-icon name="heart-outline"></ion-icon>
-                </div>
-                <img
-                  src="/w3images/jeans3.jpg"
-                  alt="Denim Jeans"
-                  style={{ width: "100%" }}
-                />
-                <h1>Apple</h1>
-                <p class="price">$19.99</p>
-                <button class="view-product">View</button>
-              </div>
-              <div class="card-details">
-                <div class="saved">
-                  <p>RUBI 128k</p>
-                  <ion-icon name="heart-outline"></ion-icon>
-                </div>
-                <img
-                  src="/w3images/jeans3.jpg"
-                  alt="Denim Jeans"
-                  style={{ width: "100%" }}
-                />
-                <h1>Apple</h1>
-                <p class="price">$19.99</p>
-                <button class="view-product">View</button>
-              </div>
-              <div class="card-details">
-                <div class="saved">
-                  <p>RUBI 128k</p>
-                  <ion-icon name="heart-outline"></ion-icon>
-                </div>
-                <img
-                  src="/w3images/jeans3.jpg"
-                  alt="Denim Jeans"
-                  style={{ width: "100%" }}
-                />
-                <h1>Apple</h1>
-                <p class="price">$19.99</p>
+              </Link>
 
-                <button class="view-product">View</button>
-              </div>
+              <ProductSlider />
             </div>
-            <div className="col">
-              <div class="card-details">
-                <div class="saved">
-                  <p>RUBI 128k</p>
-                  <ion-icon name="heart-outline"></ion-icon>
-                </div>
-                <img
-                  src="/w3images/jeans3.jpg"
-                  alt="Denim Jeans"
-                  style={{ width: "100%" }}
-                />
-                <h1>Apple</h1>
-                <p class="price">$19.99</p>
-                <button class="view-product">View</button>
-              </div>
-              <div class="card-details">
-                <div class="saved">
-                  <p>RUBI 128k</p>
-                  <ion-icon name="heart-outline"></ion-icon>
-                </div>
-                <img
-                  src="/w3images/jeans3.jpg"
-                  alt="Denim Jeans"
-                  style={{ width: "100%" }}
-                />
-                <h1>Apple</h1>
-                <p class="price">$19.99</p>
-                <button class="view-product">View</button>
-              </div>
-              <div class="card-details">
-                <div class="saved">
-                  <p>RUBI 128k</p>
-                  <ion-icon name="heart-outline"></ion-icon>
-                </div>
-                <img
-                  src="/w3images/jeans3.jpg"
-                  alt="Denim Jeans"
-                  style={{ width: "100%" }}
-                />
-                <h1>Apple</h1>
-                <p class="price">$19.99</p>
-                <button class="view-product">View</button>
+          </div>
+        </section>
+        {/* PRODUCT SECTION  */}
+        <section className="section-product">
+          <div className="product">
+            <div className="product-box">
+              <img
+                src={ProductLogo}
+                className="product-logo"
+                alt="product-logo"
+              />
+              <div className="container grid grid--3--cols margin-bottom-md">
+                {productsToDisplay &&
+                  productsToDisplay.map((product) => {
+                    const { id, brand, title, thumbnail } = product;
+                    return (
+                      <div className="products" key={id}>
+                        <div className="product-content">
+                          <div className="product-header">
+                            <p className="product-header-title">{brand}</p>
+                            <ion-icon name="heart-outline"></ion-icon>
+                          </div>
+                          <img
+                            src={thumbnail}
+                            alt={title}
+                            className="product-img"
+                            width={60}
+                          />
+                          <p className="product-title">{title}</p>
+                          <div className="view-btn-container">
+                            <Link
+                              className="view-btn"
+                              onClick={() => dispatch(getProduct(id))}
+                              to={`/product-information/${id}`}
+                            >
+                              view
+                              <img
+                                src={RightArrow}
+                                alt="RightArrow"
+                                className="right-arrow"
+                              />
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           </div>
